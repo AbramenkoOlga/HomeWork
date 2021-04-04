@@ -1,55 +1,51 @@
-package HomeWork6;
+package HomeWork_6;
 
-abstract class Animal {
-        private final int MAX_RUN_LENGTH = 0;
-        private final int MAX_SWIM_LENGTH = 0;
+public class Animal {
+    private int run;
+    private int swim;
 
-        abstract void run(int length);
-        abstract void swim(int length);
+    public Animal(int run, int swim){
+        this.run = run;
+        run = 0;
+        this.swim = swim;
+        swim = 0;
+    }
+
 }
 
-
-class Cat extends Animal {
-        private final int MAX_RUN_LENGTH = 200;
-        @Override
-        void run(int length) {
-            if ((length >= 0) && (length <= MAX_RUN_LENGTH)) System.out.println("Кот пробежал 200 метров");
-            else System.out.println("Ограничение по длинне дистанции");
+public class Cat extends Animal{
+    public Cat(int run, int swim) {
+        super(run, swim);
+        if(run<200) {
+            System.out.println("Кот пробежал " + run + " метров");
+        } else {
+            System.out.println("Ограничение по длинне дистанции");
         }
-
-        @Override
-        void swim(int length) {
+        if (swim >=0 ){
             System.out.println("Коты не умеют плавать");
         }
+    }
 }
 
-class Dog extends Animal{
-        private final int MAX_RUN_LENGTH = 500;
-        private final int MAX_SWIM_LENGTH = 10;
-
-        @Override
-        void run(int length) {
-            if ((length >= 0) && (length <= MAX_RUN_LENGTH))
-                System.out.println("Собака пробежала 500 метров");
+public class Dog extends Animal {
+    public Dog(int run, int swim) {
+        super(run, swim);
+        if(run>500){
+            System.out.println("Ограничение по длинне дистанции");
+        } else {
+            System.out.println("Собака пробежала " + run + " метров");
         }
-
-        @Override
-        void swim(int length) {
-            if ((length >= 0) && (length <= MAX_SWIM_LENGTH))
-                System.out.println("Собака проплыла 10 метров");
-            else System.out.println("Ограничение по длинне дистанции");
+        if (swim>10) {
+            System.out.println("Ограничение по длинне дистанции");
+        } else {
+            System.out.println("Собака проплыла " + swim + " метров");
         }
+    }
 }
-  
 
-  public class HomeWork6 {
-        public static void main(String[] args) {
-            Cat cat = new Cat();
-            cat.run(200);
-            cat.swim(1);
-
-            Dog dog = new Dog();
-            dog.run(500);
-            dog.swim(10);
-        }
+public class HomeWork_6 {
+    public static void main(String[] args) {
+        new Cat(150, 3);
+        new Dog(450, 5);
+    }
 }
